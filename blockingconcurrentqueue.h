@@ -940,7 +940,14 @@ public:
 	{
 		return ConcurrentQueue::is_lock_free();
 	}
-	
+
+  ConcurrentQueue* inner_queue() {
+    return &inner; 
+  }
+
+  LightweightSemaphore* inner_sema() {
+    return sema.get(); 
+  }
 
 private:
 	template<typename U>
